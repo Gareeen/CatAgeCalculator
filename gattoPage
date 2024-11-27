@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <title>Cat Age Converter with Background Music</title>
+    <style>
+        body {
+            font-family: Montserrat, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: #ff6f61;
+            color: white;
+            padding: 15px 0;
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        p {
+            font-size: 1.9em;
+            margin-top: 20px;
+        }
+
+        input {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 50%;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 2em;
+            color: #4CAF50;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .image-container img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            animation: wiggle 0.5s infinite;
+        }
+
+        @keyframes wiggle {
+            0% { transform: rotate(-7deg); }
+            50% { transform: rotate(5deg); }
+            100% { transform: rotate(-7deg); }
+        }
+
+        audio {
+            display: none; /* Hide audio player UI */
+        }
+    </style>
+</head>
+<body>
+    <h1>Cat Age Converter</h1>
+    <p>Enter your cat's age below to calculate its human age! ⬇️</p>
+    <div class="container">
+        <div class="image-container">
+            <img src="https://i.ibb.co/9bjWGW2/HEIF-Image-4.png" alt="Cat Image 1" />
+        </div>
+        <div>
+            <input type="text" id="catAgeInput" placeholder="Enter cat's age in years" />
+            <button onclick="convertAge()">Davaytee!!!</button>
+            <div class="result" id="result"></div>
+        </div>
+        <div class="image-container">
+            <img src="https://i.ibb.co/TKrZ91r/HEIF-Image-3.png" alt="Cat Image 2" />
+        </div>
+    </div>
+
+    <!-- Background Music from Google Drive -->
+    <audio autoplay loop>
+        <source src="https://docs.google.com/uc?export=download&id=14aor-gicD_8xVwSX6ZaRHI6TF4RLegGO" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function convertAge() {
+            const input = document.getElementById("catAgeInput").value;
+            const resultElement = document.getElementById("result");
+            const parsedInput = parseFloat(input);
+            
+            if (isNaN(parsedInput) || input.trim() === "") {
+                resultElement.textContent = "🤨 Please enter a valid number ara 🙂👆!";
+                resultElement.style.color = "red";
+                return;
+            }
+
+            let humanAge;
+
+            if (parsedInput >= 6) {
+                humanAge = (parsedInput - 6) * 4 + 40;
+            } else {
+                humanAge = (parsedInput * 19) / 3 + 1;
+            }
+
+            resultElement.textContent = `Your cat's age in human years is: ${humanAge.toFixed(1)}`;
+            resultElement.style.color = "#4CAF50";
+        }
+    </script>
+</body>
+</html>
